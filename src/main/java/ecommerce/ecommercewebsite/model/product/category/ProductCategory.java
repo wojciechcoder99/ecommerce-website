@@ -1,5 +1,6 @@
 package ecommerce.ecommercewebsite.model.product.category;
 
+import ecommerce.ecommercewebsite.model.product.AbstractEntity;
 import ecommerce.ecommercewebsite.model.product.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @Table(name = "product_category")
-public class ProductCategory {
+public class ProductCategory implements AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

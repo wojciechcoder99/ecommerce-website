@@ -1,4 +1,4 @@
 package ecommerce.ecommercewebsite.model.product;
 
-public class AbstractEntity {
+public interface AbstractEntity {
 }

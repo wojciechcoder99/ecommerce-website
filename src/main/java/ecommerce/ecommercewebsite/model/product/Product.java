@@ -16,7 +16,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @Table(name = "product")
-public class Product {
+public class Product implements AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
