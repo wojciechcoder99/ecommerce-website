@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @Transactional
 public abstract class AbstractService<AbstractEntity, AbstractDTO> implements IAbstractService<AbstractDTO> {
 
-    private final ModelMapper modelMapper;
+    protected final ModelMapper modelMapper;
 
     public AbstractService(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;

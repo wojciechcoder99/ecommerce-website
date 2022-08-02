@@ -1,13 +1,10 @@
 package ecommerce.ecommercewebsite.services.implementation;
 
-import ecommerce.ecommercewebsite.model.product.AbstractEntity;
 import ecommerce.ecommercewebsite.model.product.Product;
 import ecommerce.ecommercewebsite.model.product.ProductDTO;
 import ecommerce.ecommercewebsite.repositories.AbstractRepository;
 import ecommerce.ecommercewebsite.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
-
-import java.util.List;
 
 public class ProductService extends AbstractService<Product, ProductDTO> {
 
@@ -25,12 +22,12 @@ public class ProductService extends AbstractService<Product, ProductDTO> {
 
     @Override
     protected ProductDTO convertToDto(Product product) {
-        return null;
+        return modelMapper.map(product, ProductDTO.class);
     }
 
     @Override
     protected Product convertToEntity(ProductDTO productDTO) {
-        return null;
+        return modelMapper.map(productDTO, Product.class);
     }
 
 }
