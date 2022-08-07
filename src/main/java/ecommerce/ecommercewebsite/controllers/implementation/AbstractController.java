@@ -5,41 +5,59 @@ import ecommerce.ecommercewebsite.controllers.interfaces.IAbstractController;
 import ecommerce.ecommercewebsite.exceptions.ProvidedElementIsNullException;
 import ecommerce.ecommercewebsite.model.product.AbstractDTO;
 import ecommerce.ecommercewebsite.services.interfaces.IAbstractService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractController implements IAbstractController {
+@AllowExceptionHandler
+@RestController
+@RequestMapping("api/products")
+public abstract class AbstractController<AbstractDTO> implements IAbstractController<AbstractDTO> {
     protected final IAbstractService<AbstractDTO> service;
 
     public AbstractController(IAbstractService<AbstractDTO> service) {
         this.service = service;
     }
 
-    @AllowExceptionHandler
+    @PostMapping
     @Override
-    public Optional<AbstractDTO> create(AbstractDTO product) throws ProvidedElementIsNullException {
+    public ResponseEntity<AbstractDTO> create(@RequestBody AbstractDTO product) throws ProvidedElementIsNullException {
         return Optional.ofNullable(product).map(service::create)
+                .map(Optional::get)
+                .map(ResponseEntity::ok)
                 .orElseThrow(ProvidedElementIsNullException::new);
     }
 
+    @PostMapping("/{id}")
     @Override
-    public Optional<AbstractDTO> update(Long id, AbstractDTO product) {
-        return service.findById(id).map(p -> service.update(product, id)).orElseThrow();
+    public ResponseEntity<AbstractDTO> update(@PathVariable Long id, @RequestBody AbstractDTO product) {
+        return service.findById(id).map(p -> service.update(product, id))
+                .map(Optional::get)
+                .map(ResponseEntity::ok)
+                .orElseThrow();
     }
 
+    @GetMapping("/{id}")
     @Override
-    public AbstractDTO findOne(Long id) {
-        return service.findById(id).orElseThrow();
+    public ResponseEntity<AbstractDTO> findOne(@PathVariable Long id) {
+        return service.findById(id).map(ResponseEntity::ok).orElseThrow();
     }
 
+    @GetMapping
     @Override
-    public List<AbstractDTO> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<AbstractDTO>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
+    @DeleteMapping("/{id}")
     @Override
-    public boolean delete(Long id) {
-        return service.findById(id).map(p -> service.delete(id)).orElseThrow();
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        return service.findById(id).map(p -> service.delete(id))
+                .map(Object::toString)
+                .map(ResponseEntity::ok)
+                .orElseThrow();
     }
 }
