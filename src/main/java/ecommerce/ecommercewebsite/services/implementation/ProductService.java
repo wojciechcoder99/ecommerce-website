@@ -5,7 +5,9 @@ import ecommerce.ecommercewebsite.model.product.ProductDTO;
 import ecommerce.ecommercewebsite.repositories.AbstractRepository;
 import ecommerce.ecommercewebsite.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductService extends AbstractService<Product, ProductDTO> {
 
     private ProductRepository productRepository;

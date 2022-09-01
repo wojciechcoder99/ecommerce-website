@@ -1,7 +1,5 @@
 package ecommerce.ecommercewebsite.services.interfaces;
 
-import ecommerce.ecommercewebsite.model.product.AbstractDTO;
-
 import java.util.List;
 import java.util.Optional;
 

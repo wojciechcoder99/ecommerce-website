@@ -1,5 +1,6 @@
 package ecommerce.ecommercewebsite.model.product;
 
+import ecommerce.ecommercewebsite.model.AbstractEntity;
 import ecommerce.ecommercewebsite.model.product.category.ProductCategory;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

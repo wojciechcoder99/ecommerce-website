@@ -1,12 +1,9 @@
 package ecommerce.ecommercewebsite.controllers.interfaces;
 
 import ecommerce.ecommercewebsite.exceptions.ProvidedElementIsNullException;
-import ecommerce.ecommercewebsite.model.product.AbstractDTO;
-import ecommerce.ecommercewebsite.model.product.ProductDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IAbstractController<AbstractDTO> {
     ResponseEntity<AbstractDTO> create(AbstractDTO product) throws ProvidedElementIsNullException;

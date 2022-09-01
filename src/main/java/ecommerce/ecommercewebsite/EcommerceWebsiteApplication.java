@@ -14,7 +14,9 @@ public class EcommerceWebsiteApplication {
 
 	@Bean
 	public ModelMapper modelMapper() {
-		return new ModelMapper();
+		ModelMapper mapper =  new ModelMapper();
+		mapper.getConfiguration().setSkipNullEnabled(true);
+		return mapper;
 	}
 
 }
