@@ -1,11 +1,9 @@
 package ecommerce.ecommercewebsite.controllers.implementation;
 
-import ecommerce.ecommercewebsite.annotations.AllowExceptionHandler;
 import ecommerce.ecommercewebsite.controllers.interfaces.IAbstractController;
 import ecommerce.ecommercewebsite.exceptions.ProvidedElementIsNullException;
 import ecommerce.ecommercewebsite.services.interfaces.IAbstractService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
