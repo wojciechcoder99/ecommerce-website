@@ -44,4 +44,6 @@ public class Product implements AbstractEntity {
 
     @ManyToOne
     private ProductCategory category;
+
+    //TODO: create base entity which will be responsible for log the operations in console
 }
