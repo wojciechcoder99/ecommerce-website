@@ -8,7 +8,7 @@ import { Product } from '../model/product';
 })
 export class ProductService {
 
-  private readonly API_URL = 'http://';
+  private readonly API_URL = 'http://localhost:8080/api/products';
 
   constructor(private http: HttpClient) { }
 
@@ -16,6 +16,7 @@ export class ProductService {
     return this.http.get<Product>(this.API_URL + id);
   }
 
+  // TODO: create pipe to transform data
   getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(this.API_URL);
   }
